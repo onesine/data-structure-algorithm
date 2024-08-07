@@ -1,34 +1,54 @@
-# React + TypeScript + Vite
+# Data Structure and Algorithm
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<p align="center">
+Welcome to the data structure and algorithms project. In this project, I try to practice DSA through concrete cases.
+</p>
 
-Currently, two official plugins are available:
+## Contents
 
--   [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
--   [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+-   [Features](#online-demo)
+-   [Online demo](#installation)
 
-## Expanding the ESLint configuration
+## Online Demo
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+You can find the online demo at [here](https://data-structure-algorithm.vercel.app/)
 
--   Configure the top-level `parserOptions` property like this:
+## Installation
 
-```js
-export default {
-    // other rules...
-    parserOptions: {
-        ecmaVersion: "latest",
-        sourceType: "module",
-        project: [
-            "./tsconfig.json",
-            "./tsconfig.node.json",
-            "./tsconfig.app.json"
-        ],
-        tsconfigRootDir: __dirname
-    }
-};
+1. Clone this repo
+
+```sh
+    git clone https://github.com/onesine/data-structure-algorithm.git
 ```
 
--   Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
--   Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
--   Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+2. Go into the project root directory
+
+```sh
+    cd data-structure-algorithm
+```
+
+3. Install JS dependencies
+
+```sh
+    yarn install
+```
+
+4. Start the dev server
+
+```sh
+    yarn dev
+```
+
+You can now test the application on the link `http://localhost:5173/`
+
+4. Useful script
+
+```sh
+    yarn code-style:fix
+```
+
+Allows to fix the problems related to the code style.
+
+```sh
+    yarn build
+```
