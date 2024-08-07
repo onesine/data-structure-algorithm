@@ -81,6 +81,8 @@ int main() {
     printf("0\n");
     printf("1\n");
     fibo(0, 1);
+    
+    return 0;
 }
 ```
 
@@ -99,5 +101,33 @@ int f(int n) {
 int main() {
     printf("===========Fibonacci term=======\n");
     printf("term-8:%d\n", f(8));
+    
+    return 0;
+}
+```
+
+3. Find the minimum in an array data structure
+
+```c
+#include <stdio.h>
+
+const int TAB_SIZE = 6;
+
+int main() {
+    int tab[] = {9, 4, 6, 1, 10, 2};
+    int min;
+    
+    printf("===========Array min value=======\n");
+    min = tab[0];
+    
+    for(int i = 1; i < TAB_SIZE; i++) {
+        if(min > tab[i]) {
+            min = tab[i];
+        }
+    }
+    
+    printf("min:%d\n", min);
+    
+    return 0;
 }
 ```
