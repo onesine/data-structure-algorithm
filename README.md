@@ -41,7 +41,7 @@ You can find the online demo at [here](https://data-structure-algorithm.vercel.a
 
 You can now test the application on the link `http://localhost:5173/`
 
-4. Useful script
+5. Useful script
 
 ```sh
     yarn code-style:fix
@@ -51,4 +51,52 @@ Allows to fix the problems related to the code style.
 
 ```sh
     yarn build
+```
+
+## Algorithms
+
+1. Fibonacci list
+
+```c
+#include <stdio.h>
+
+const int MAX_LIMIT = 19;
+int limit = 2;
+
+void fibo(int prev1, int prev2) {
+    int result = prev1 + prev2;
+
+    printf("%d\n", result);
+
+    if(limit < MAX_LIMIT) {
+        fibo(prev2, result);
+    }
+
+    return;
+}
+
+int main() {
+    printf("===========Fibonacci liste=======\n");
+    printf("0\n");
+    printf("1\n");
+    fibo(0, 1);
+}
+```
+
+2. Find the n th fibonacci term
+
+```c
+#include <stdio.h>
+
+int f(int n) {
+    if(n <= 1)
+        return n;
+    else
+        return f(n - 1) + f(n - 2);
+}
+
+int main() {
+    printf("===========Fibonacci term=======\n");
+    printf("term-8:%d\n", f(8));
+}
 ```
