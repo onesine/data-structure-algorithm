@@ -8,7 +8,7 @@ Welcome to the data structure and algorithms project. In this project, I try to 
 
 -   [Features](#online-demo)
 -   [Online demo](#installation)
--   [Online demo](#algorithms)
+-   [Algorithms](#algorithms)
 
 ## Online Demo
 
