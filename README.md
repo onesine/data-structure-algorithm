@@ -112,19 +112,56 @@ int main() {
 #include <stdio.h>
 
 int main() {
-    int tab[] = {9, 4, 6, 1, 10, 2}, min;
-    int n = sizeof(tab) / sizeof(tab[0]);
+    int array[] = {9, 4, 6, 1, 10, 2}, min;
+    int n = sizeof(array) / sizeof(array[0]);
     
     printf("===========Array min value===========\n");
-    min = tab[0];
+    min = array[0];
     
     for(int i = 1; i < n; i++) {
-        if(min > tab[i]) {
-            min = tab[i];
+        if(min > array[i]) {
+            min = array[i];
         }
     }
     
     printf("min:%d\n", min);
+    
+    return 0;
+}
+```
+
+```c
+#include <stdio.h>
+#include <stdbool.h>
+
+int main() {
+    int array[] = {7, 61, 3, 8, 10, 2, 5, 23, 51, 4, 13, 21}, temp, i;
+    int n = sizeof(array) / sizeof(array[0]);
+    bool swap;
+    
+    printf("===========Bubble Sort===========\n");
+    
+    for(i = 0; i < n - 1; i++) {
+        swap = false;
+        for(y = 0; y < n - i - 1; y++) {
+            temp = array[y];
+            if(temp > array[y + 1]) {
+                array[y] = array[y + 1];
+                array[y + 1] = temp;
+                swap = true;
+            }
+        }
+        
+        if(!swap) break;
+    }
+    
+    printf("[");
+    for(i = 0; i < n; i++) {
+        printf("%d", array[i]);
+        
+        if(i < n - 1) printf(", ");
+    }
+    printf("]");
     
     return 0;
 }
