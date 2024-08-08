@@ -3,12 +3,13 @@ import { useCallback, useMemo, useRef, useState } from "react";
 
 import AppLayout from "@/components/app-layout.tsx";
 import { Button } from "@/components/ui/button.tsx";
+import VerticalBar from "@/components/vertical-bar.tsx";
+import { MAX_PERCENTAGE } from "@/constants";
 import { cn } from "@/lib/utils.ts";
 
 const MAX_LIMIT = 19;
 const MIN_LIMIT = 9;
 const MIN_LIMIT_FIBONACCI_VALUE = 13;
-const MAX_PERCENTAGE = 100;
 const INITIAL_FIBONACCI_NUMBERS = [0, 1];
 const INITIAL_LIMIT = INITIAL_FIBONACCI_NUMBERS.length;
 
@@ -82,39 +83,32 @@ const Fibonacci = () => {
                     {limit.current === MAX_LIMIT ? "Reset" : "Create"}
                 </Button>
 
-                <div className="flex items-end mx-auto space-x-1 w-[538px] min-h-[415px]">
+                <div className="flex items-end mx-auto space-x-1 w-2/3 min-h-[415px]">
                     <AnimatePresence>
                         {numbers.map((item, index) => (
-                            <div
-                                className="flex flex-col items-center"
-                                key={index}
-                            >
-                                <div className="flex items-end h-[405px]">
-                                    <motion.div
-                                        initial={{
-                                            height: "0rem",
-                                            width: "0rem"
-                                        }}
-                                        animate={{
-                                            height: `${HeightInPercent(item) * scale}%`,
-                                            width: "1.5rem"
-                                        }}
-                                        exit={{
-                                            height: "0rem",
-                                            opacity: "0"
-                                        }}
-                                        className={cn({
-                                            "bg-slate-300 border border-slate-400 w-6":
-                                                true
-                                        })}
-                                        style={{
-                                            height: `${HeightInPercent(item) * scale}%`
-                                        }}
-                                    />
-                                </div>
-
-                                <div className="text-xs">{item}</div>
-                            </div>
+                            <VerticalBar label={item} key={index}>
+                                <motion.div
+                                    initial={{
+                                        height: "0rem",
+                                        width: "0rem"
+                                    }}
+                                    animate={{
+                                        height: `${HeightInPercent(item) * scale}%`,
+                                        width: "1.5rem"
+                                    }}
+                                    exit={{
+                                        height: "0rem",
+                                        opacity: "0"
+                                    }}
+                                    className={cn({
+                                        "bg-slate-300 border border-slate-400 w-6":
+                                            true
+                                    })}
+                                    style={{
+                                        height: `${HeightInPercent(item) * scale}%`
+                                    }}
+                                />
+                            </VerticalBar>
                         ))}
                     </AnimatePresence>
                 </div>

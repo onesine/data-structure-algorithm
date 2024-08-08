@@ -37,7 +37,11 @@ const Aside = () => {
             <div className="h-[52px] border-b" />
 
             <div className="px-4 pt-3 pb-2 space-y-1.5">
-                <AsideLink to={PAGES.FIBONACCI}>Fibonacci</AsideLink>
+                {Object.values(PAGES).map((item, index) => (
+                    <AsideLink key={index} to={item.path}>
+                        {item.asideText}
+                    </AsideLink>
+                ))}
             </div>
         </div>
     );
