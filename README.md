@@ -114,8 +114,7 @@ int main() {
 const int TAB_SIZE = 6;
 
 int main() {
-    int tab[] = {9, 4, 6, 1, 10, 2};
-    int min;
+    int tab[] = {9, 4, 6, 1, 10, 2}, min;
     
     printf("===========Array min value===========\n");
     min = tab[0];
