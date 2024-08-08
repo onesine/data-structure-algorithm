@@ -81,7 +81,7 @@ int main() {
     printf("0\n");
     printf("1\n");
     fibo(0, 1);
-    
+
     return 0;
 }
 ```
@@ -101,7 +101,7 @@ int f(int n) {
 int main() {
     printf("===========Fibonacci term===========\n");
     printf("term-8:%d\n", f(8));
-    
+
     return 0;
 }
 ```
@@ -114,21 +114,23 @@ int main() {
 int main() {
     int array[] = {9, 4, 6, 1, 10, 2}, min;
     int n = sizeof(array) / sizeof(array[0]);
-    
+
     printf("===========Array min value===========\n");
     min = array[0];
-    
+
     for(int i = 1; i < n; i++) {
         if(min > array[i]) {
             min = array[i];
         }
     }
-    
+
     printf("min:%d\n", min);
-    
+
     return 0;
 }
 ```
+
+4. Bubble Sort
 
 ```c
 #include <stdio.h>
@@ -138,9 +140,9 @@ int main() {
     int array[] = {7, 61, 3, 8, 10, 2, 5, 23, 51, 4, 13, 21}, temp, i;
     int n = sizeof(array) / sizeof(array[0]);
     bool swap;
-    
+
     printf("===========Bubble Sort===========\n");
-    
+
     for(i = 0; i < n - 1; i++) {
         swap = false;
         for(y = 0; y < n - i - 1; y++) {
@@ -151,18 +153,18 @@ int main() {
                 swap = true;
             }
         }
-        
+
         if(!swap) break;
     }
-    
+
     printf("[");
     for(i = 0; i < n; i++) {
         printf("%d", array[i]);
-        
+
         if(i < n - 1) printf(", ");
     }
     printf("]");
-    
+
     return 0;
 }
 ```
