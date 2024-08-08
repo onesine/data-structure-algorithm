@@ -77,7 +77,7 @@ void fibo(int prev1, int prev2) {
 }
 
 int main() {
-    printf("===========Fibonacci liste=======\n");
+    printf("===========Fibonacci liste===========\n");
     printf("0\n");
     printf("1\n");
     fibo(0, 1);
@@ -99,7 +99,7 @@ int f(int n) {
 }
 
 int main() {
-    printf("===========Fibonacci term=======\n");
+    printf("===========Fibonacci term===========\n");
     printf("term-8:%d\n", f(8));
     
     return 0;
@@ -117,7 +117,7 @@ int main() {
     int tab[] = {9, 4, 6, 1, 10, 2};
     int min;
     
-    printf("===========Array min value=======\n");
+    printf("===========Array min value===========\n");
     min = tab[0];
     
     for(int i = 1; i < TAB_SIZE; i++) {
