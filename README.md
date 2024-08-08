@@ -111,15 +111,14 @@ int main() {
 ```c
 #include <stdio.h>
 
-const int TAB_SIZE = 6;
-
 int main() {
     int tab[] = {9, 4, 6, 1, 10, 2}, min;
+    int n = sizeof(tab) / sizeof(tab[0]);
     
     printf("===========Array min value===========\n");
     min = tab[0];
     
-    for(int i = 1; i < TAB_SIZE; i++) {
+    for(int i = 1; i < n; i++) {
         if(min > tab[i]) {
             min = tab[i];
         }
