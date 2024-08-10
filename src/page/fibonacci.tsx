@@ -12,6 +12,7 @@ const MIN_LIMIT = 9;
 const MIN_LIMIT_FIBONACCI_VALUE = 13;
 const INITIAL_FIBONACCI_NUMBERS = [0, 1];
 const INITIAL_LIMIT = INITIAL_FIBONACCI_NUMBERS.length;
+const NEXT_STEP_DURATION = 500;
 
 const Fibonacci = () => {
     const [numbers, setNumbers] = useState<number[]>(INITIAL_FIBONACCI_NUMBERS);
@@ -28,7 +29,7 @@ const Fibonacci = () => {
             limit.current++;
             setTimeout(() => {
                 fibonacciCal(prev2, result);
-            }, 500);
+            }, NEXT_STEP_DURATION);
         }
 
         limit?.current === MAX_LIMIT && setCreating(false);
