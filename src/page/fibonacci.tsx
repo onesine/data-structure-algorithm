@@ -28,7 +28,7 @@ const Fibonacci = () => {
             limit.current++;
             setTimeout(() => {
                 fibonacciCal(prev2, result);
-            }, 1000);
+            }, 500);
         }
 
         limit?.current === MAX_LIMIT && setCreating(false);
