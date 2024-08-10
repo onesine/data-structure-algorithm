@@ -15,11 +15,9 @@ const AppLayout = (props: Props) => {
             <Aside />
 
             <section className="min-h-screen flex flex-col justify-between relative top-0 left-[300px] w-[calc(100%-300px)]">
-                <>
-                    <Nav />
+                <Nav />
 
-                    <main className="pt-16 pb-5 px-12">{children}</main>
-                </>
+                <main className="pt-16 pb-5 px-12">{children}</main>
             </section>
         </>
     );

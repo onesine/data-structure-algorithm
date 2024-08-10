@@ -34,7 +34,9 @@ const INITIAL_NUMBERS = [
 const MAX_PERCENTAGE = 100;
 
 const BubbleSort = () => {
-    const [sorting, setSorting] = useState(false);
+    const [arrayStep, setArrayStep] = useState<"initial" | "sorting" | "sort">(
+        "initial"
+    );
     const [array, setArray] = useState<ArrayNumberType[]>(INITIAL_NUMBERS);
     const [currentAnimate, setCurrentAnimate] = useState<number[]>([]);
 
@@ -68,7 +70,7 @@ const BubbleSort = () => {
             if (!swap) break;
         }
 
-        setSorting(true);
+        setArrayStep("sorting");
         steps.forEach((step, index) => {
             setTimeout(() => {
                 const [a, b] = step;
@@ -81,7 +83,7 @@ const BubbleSort = () => {
                 });
 
                 if (index === steps.length - 1) {
-                    setSorting(false);
+                    setArrayStep("sort");
                     setCurrentAnimate([]);
                 }
             }, index * 1000);
@@ -97,10 +99,19 @@ const BubbleSort = () => {
 
                 <Button
                     className="mb-3"
-                    onClick={handleSort}
-                    disabled={sorting}
+                    onClick={
+                        ["initial", "sorting"].includes(arrayStep)
+                            ? handleSort
+                            : () => {
+                                  setArray(INITIAL_NUMBERS);
+                                  setArrayStep("initial");
+                              }
+                    }
+                    disabled={arrayStep === "sorting"}
                 >
-                    Sort
+                    {["initial", "sorting"].includes(arrayStep)
+                        ? "Sort"
+                        : "Reset"}
                 </Button>
 
                 <div className="flex items-end space-x-1 w-2/4 mx-auto">
