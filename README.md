@@ -173,7 +173,6 @@ int main() {
 
 ```c
 #include <stdio.h>
-#include <stdbool.h>
 
 int main() {
     int array[] = {7, 61, 3, 8, 10, 2, 5, 23, 51, 4, 13, 21}, temp, i, minIndex;
