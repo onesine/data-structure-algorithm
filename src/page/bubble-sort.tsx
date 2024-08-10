@@ -38,6 +38,7 @@ const INITIAL_NUMBERS = [
     { id: "19", value: 18 }
 ];
 const MAX_PERCENTAGE = 100;
+const INTERVAL_STEP_DURATION = 600;
 
 const BubbleSort = () => {
     const [arrayStep, setArrayStep] = useState<"initial" | "sorting" | "sort">(
@@ -127,7 +128,7 @@ const BubbleSort = () => {
                         return [...prevState, b, ...lastsIndex];
                     });
                 }
-            }, index * 600);
+            }, index * INTERVAL_STEP_DURATION);
         });
     }, [array]);
 
