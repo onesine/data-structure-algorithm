@@ -5,7 +5,6 @@ import AppLayout from "@/components/app-layout.tsx";
 import { Button } from "@/components/ui/button.tsx";
 import VerticalBar from "@/components/vertical-bar.tsx";
 import { MAX_PERCENTAGE } from "@/constants";
-import { cn } from "@/lib/utils.ts";
 
 const MAX_LIMIT = 19;
 const MIN_LIMIT = 9;
@@ -101,10 +100,7 @@ const Fibonacci = () => {
                                         height: "0rem",
                                         opacity: "0"
                                     }}
-                                    className={cn({
-                                        "bg-slate-300 border border-slate-400 w-6":
-                                            true
-                                    })}
+                                    className="bg-slate-300 border border-slate-400 w-6"
                                     style={{
                                         height: `${HeightInPercent(item) * scale}%`
                                     }}

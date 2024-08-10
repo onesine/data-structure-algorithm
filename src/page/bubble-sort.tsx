@@ -4,7 +4,6 @@ import { useCallback, useMemo, useState } from "react";
 import AppLayout from "@/components/app-layout.tsx";
 import { Button } from "@/components/ui/button.tsx";
 import VerticalBar from "@/components/vertical-bar.tsx";
-import { cn } from "@/lib/utils.ts";
 
 interface ArrayNumberType {
     id: string;
@@ -161,10 +160,7 @@ const BubbleSort = () => {
                     {array.map((item, itemIndex) => (
                         <VerticalBar label={item.value} key={item.id}>
                             <motion.div
-                                className={cn({
-                                    "bg-slate-300 border border-slate-400 w-6":
-                                        true
-                                })}
+                                className="bg-slate-300 border border-slate-400 w-6"
                                 style={{
                                     height: `${HeightInPercent(item.value)}%`
                                 }}
