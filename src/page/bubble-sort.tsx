@@ -127,7 +127,7 @@ const BubbleSort = () => {
                         return [...prevState, b, ...lastsIndex];
                     });
                 }
-            }, index * 1000);
+            }, index * 600);
         });
     }, [array]);
 
