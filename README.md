@@ -168,3 +168,41 @@ int main() {
     return 0;
 }
 ```
+
+5. Selection Sort
+
+```c
+#include <stdio.h>
+
+int main() {
+    int array[] = {7, 61, 3, 8, 10, 2, 5, 23, 51, 4, 13, 21}, temp, i, minIndex;
+    int n = sizeof(array) / sizeof(array[0]);
+
+    printf("===========Selection Sort===========\n");
+    for(i = 0; i < n - 1; i++) {
+        minIndex = i;
+        for(int y = i + 1; y < n; y++) {
+            if(array[minIndex] > array[y]) {
+                minIndex = y;
+            }
+        }
+
+        if(i != minIndex) {
+            temp = array[i];
+            array[i] = array[minIndex];
+            array[minIndex] = temp;
+        }
+    }
+
+
+    printf("[");
+    for(i = 0; i < n; i++) {
+        printf("%d", array[i]);
+
+        if(i < n - 1) printf(", ");
+    }
+    printf("]");
+
+    return 0;
+}
+```
