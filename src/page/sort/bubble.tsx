@@ -1,14 +1,11 @@
 import { motion } from "framer-motion";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useState } from "react";
 
 import AppLayout from "@/components/app-layout.tsx";
-import { Button } from "@/components/ui/button.tsx";
 import VerticalBar from "@/components/vertical-bar.tsx";
-
-interface ArrayNumberType {
-    id: string;
-    value: number;
-}
+import Header from "@/page/sort/components/header.tsx";
+import useCommonAspectSort from "@/page/sort/hooks/useCommonAspectSort.ts";
+import { ArrayStepType } from "@/types";
 
 interface StepType {
     swap: boolean;
@@ -16,50 +13,21 @@ interface StepType {
     maxStep: boolean;
 }
 
-const INITIAL_NUMBERS = [
-    { id: "1", value: 7 },
-    { id: "2", value: 61 },
-    { id: "3", value: 8 },
-    { id: "4", value: 10 },
-    { id: "5", value: 2 },
-    { id: "6", value: 23 },
-    { id: "7", value: 51 },
-    { id: "8", value: 4 },
-    { id: "9", value: 13 },
-    { id: "10", value: 21 },
-    { id: "11", value: 100 },
-    { id: "12", value: 15 },
-    { id: "13", value: 75 },
-    { id: "14", value: 25 },
-    { id: "15", value: 44 },
-    { id: "17", value: 23 },
-    { id: "18", value: 3 },
-    { id: "19", value: 18 }
-];
-const MAX_PERCENTAGE = 100;
-const INTERVAL_STEP_DURATION = 600;
+const INTERVAL_STEP_DURATION = 500;
 
-const BubbleSort = () => {
-    const [arrayStep, setArrayStep] = useState<"initial" | "sorting" | "sort">(
-        "initial"
-    );
-    const [array, setArray] = useState<ArrayNumberType[]>(INITIAL_NUMBERS);
+const Bubble = () => {
+    const {
+        arrayStep,
+        array,
+        sortIndexes,
+        heightInPercent,
+        handleReset,
+        transition
+    } = useCommonAspectSort();
     const [currentAnimate, setCurrentAnimate] = useState<number[]>([]);
-    const [sortIndex, setSortIndex] = useState<number[]>([]);
-
-    const maxValue = useMemo(() => {
-        return Math.max(...array.map((item) => item.value));
-    }, [array]);
-
-    const HeightInPercent = useCallback(
-        (value: number) => {
-            return (value / maxValue) * MAX_PERCENTAGE;
-        },
-        [maxValue]
-    );
 
     const handleSort = useCallback(() => {
-        const newArray = [...array.map((item) => ({ ...item }))];
+        const newArray = [...array.get().map((item) => ({ ...item }))];
         const steps: StepType[] = [];
 
         for (let i = 0; i < newArray.length - 1; i++) {
@@ -90,7 +58,7 @@ const BubbleSort = () => {
             if (!swap) break;
         }
 
-        setArrayStep("sorting");
+        arrayStep.set(ArrayStepType.Sorting);
         steps.forEach((step, index) => {
             setTimeout(() => {
                 const {
@@ -100,7 +68,7 @@ const BubbleSort = () => {
                 } = step;
 
                 setCurrentAnimate([a, b]);
-                setArray((prevArray) => {
+                array.set((prevArray) => {
                     const newItems = [...prevArray];
                     if (swap) {
                         [newItems[a], newItems[b]] = [newItems[b], newItems[a]];
@@ -110,12 +78,12 @@ const BubbleSort = () => {
                 });
 
                 if (index === steps.length - 1) {
-                    setArrayStep("sort");
+                    arrayStep.set(ArrayStepType.Sort);
                     setCurrentAnimate([]);
                 }
 
                 if (maxStep) {
-                    setSortIndex((prevState) => {
+                    sortIndexes.set((prevState) => {
                         const lastsIndex: number[] = [];
 
                         if (index === steps.length - 1 && b > 0) {
@@ -129,64 +97,44 @@ const BubbleSort = () => {
                 }
             }, index * INTERVAL_STEP_DURATION);
         });
-    }, [array]);
+    }, [array, arrayStep, sortIndexes]);
 
     return (
         <AppLayout>
             <div className="border rounded-md p-5">
-                <h3 className="text-gray-600 text-xl font-medium mb-8 text-center">
-                    Bubble Sort
-                </h3>
-
-                <Button
-                    className="mb-3"
-                    onClick={
-                        ["initial", "sorting"].includes(arrayStep)
-                            ? handleSort
-                            : () => {
-                                  setArray(INITIAL_NUMBERS);
-                                  setArrayStep("initial");
-                                  setSortIndex([]);
-                              }
-                    }
-                    disabled={arrayStep === "sorting"}
-                >
-                    {["initial", "sorting"].includes(arrayStep)
-                        ? "Sort"
-                        : "Reset"}
-                </Button>
+                <Header
+                    title="Bubble Sort"
+                    handleSort={handleSort}
+                    handleReset={handleReset}
+                    arrayStep={arrayStep.get()}
+                />
 
                 <div className="flex items-end space-x-1 w-2/4 mx-auto">
-                    {array.map((item, itemIndex) => (
+                    {array.get().map((item, itemIndex) => (
                         <VerticalBar label={item.value} key={item.id}>
                             <motion.div
                                 className="bg-slate-300 border border-slate-400 w-6"
                                 style={{
-                                    height: `${HeightInPercent(item.value)}%`
+                                    height: `${heightInPercent(item.value)}%`
                                 }}
                                 layout
                                 animate={{
-                                    backgroundColor: sortIndex.includes(
-                                        itemIndex
-                                    )
+                                    backgroundColor: sortIndexes
+                                        .get()
+                                        .includes(itemIndex)
                                         ? "#84cc16"
                                         : currentAnimate.includes(itemIndex)
                                           ? "#fbbf24"
                                           : "#cbd5e1",
-                                    borderColor: sortIndex.includes(itemIndex)
+                                    borderColor: sortIndexes
+                                        .get()
+                                        .includes(itemIndex)
                                         ? "#84cc16"
                                         : currentAnimate.includes(itemIndex)
                                           ? "#fbbf24"
                                           : "#94a3b8"
                                 }}
-                                transition={{
-                                    layout: {
-                                        type: "spring",
-                                        stiffness: 300,
-                                        damping: 30,
-                                        duration: 0.5
-                                    }
-                                }}
+                                transition={transition}
                             />
                         </VerticalBar>
                     ))}
@@ -196,4 +144,4 @@ const BubbleSort = () => {
     );
 };
 
-export default BubbleSort;
+export default Bubble;

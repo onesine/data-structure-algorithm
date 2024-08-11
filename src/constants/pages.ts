@@ -1,5 +1,6 @@
-import BubbleSort from "@/page/bubble-sort.tsx";
 import Fibonacci from "@/page/fibonacci.tsx";
+import Bubble from "@/page/sort/bubble.tsx";
+import Selection from "@/page/sort/selection.tsx";
 
 const PAGES = {
     FIBONACCI: {
@@ -9,8 +10,13 @@ const PAGES = {
     },
     BUBBLE_SORT: {
         asideText: "Bubble Sort",
-        path: "/bubble-sort",
-        page: BubbleSort
+        path: "/sort/bubble",
+        page: Bubble
+    },
+    SELECTION_SORT: {
+        asideText: "Selection Sort",
+        path: "/sort/selection",
+        page: Selection
     }
 };
 
