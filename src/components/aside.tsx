@@ -16,13 +16,15 @@ const AsideLink = (props: AsideLinkProps) => {
             to={to}
             className={({ isActive }) =>
                 cn({
-                    "focus:outline-none focus:ring-slate-900/20": true,
+                    "focus:outline-none focus:bg-gray-100": true,
+                    "focus:ring-none": true,
                     "flex w-full text-sm font-medium": true,
                     "border border-slate-900/0": true,
-                    "focus:border focus:border-slate-900": true,
-                    "px-3 py-2 rounded-md focus:ring": true,
+                    "px-3 py-2 rounded-md": true,
                     "hover:bg-gray-100": !isActive,
-                    "bg-slate-900 text-white": isActive
+                    "bg-slate-900 text-white": isActive,
+                    "focus:ring focus:bg-slate-900": isActive,
+                    "focus:ring-slate-900/20": isActive
                 })
             }
         >
