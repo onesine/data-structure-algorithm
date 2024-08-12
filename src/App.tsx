@@ -1,5 +1,5 @@
 import "./index.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 
 import PAGES from "@/constants/pages.ts";
 
@@ -15,6 +15,11 @@ function App() {
                             element={<item.page />}
                         />
                     ))}
+
+                    <Route
+                        path="*"
+                        element={<Navigate to={PAGES.FIBONACCI.path} />}
+                    />
                 </Routes>
             </BrowserRouter>
         </>
