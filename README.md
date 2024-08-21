@@ -145,11 +145,11 @@ You can find the online demo at [here](https://data-structure-algorithm-psi.verc
 
         for(i = 0; i < n - 1; i++) {
             swap = false;
-            for(y = 0; y < n - i - 1; y++) {
-                temp = array[y];
-                if(temp > array[y + 1]) {
-                    array[y] = array[y + 1];
-                    array[y + 1] = temp;
+            for(int j = 0; j < n - i - 1; j++) {
+                temp = array[j];
+                if(temp > array[j + 1]) {
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
                     swap = true;
                 }
             }
@@ -181,9 +181,9 @@ You can find the online demo at [here](https://data-structure-algorithm-psi.verc
         printf("===========Selection Sort===========\n");
         for(i = 0; i < n - 1; i++) {
             minIndex = i;
-            for(int y = i + 1; y < n; y++) {
-                if(array[minIndex] > array[y]) {
-                  minIndex = y;
+            for(int j = i + 1; j < n; j++) {
+                if(array[minIndex] > array[j]) {
+                  minIndex = j;
                 }
             }
 
@@ -219,12 +219,12 @@ You can find the online demo at [here](https://data-structure-algorithm-psi.verc
         printf("===========Selection Sort===========\n");
         for(i = 1; i < n; i++) {
             int currentMin = array[i];
-            int y = i - 1;
+            int j = i - 1;
     
-            while(y >= 0 && currentMin < array[y]) {
-                array[y + 1] = array[y];
-                array[y] = currentMin;
-                y--;
+            while(j >= 0 && currentMin < array[j]) {
+                array[j + 1] = array[j];
+                array[j] = currentMin;
+                j--;
             }
         }
     
