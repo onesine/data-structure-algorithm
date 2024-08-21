@@ -40,7 +40,7 @@ You can find the online demo at [here](https://data-structure-algorithm-psi.verc
         yarn dev
     ```
 
-    You can now test the application on the link `http://localhost:5173/`
+   You can now test the application on the link `http://localhost:5173/`
 
 5. Useful script
 
@@ -48,7 +48,7 @@ You can find the online demo at [here](https://data-structure-algorithm-psi.verc
         yarn code-style:fix
     ```
 
-    Allows to fix the problems related to the code style.
+   Allows to fix the problems related to the code style.
 
     ```sh
         yarn build
@@ -209,33 +209,33 @@ You can find the online demo at [here](https://data-structure-algorithm-psi.verc
 
 6. Insertion Sort
 
-```c
-#include <stdio.h>
-
-int main() {
-    int array[] = {7, 61, 3, 8, 10, 2, 5, 23, 51, 4, 13, 21}, i;
-    int n = sizeof(array) / sizeof(array[0]);
-
-    printf("===========Selection Sort===========\n");
-    for(i = 1; i < n; i++) {
-        int currentMin = array[i];
-        int y = i - 1;
-
-        while(y >= 0 && currentMin < array[y]) {
-            array[y + 1] = array[y];
-            array[y] = currentMin;
-            y--;
+    ```c
+    #include <stdio.h>
+    
+    int main() {
+        int array[] = {7, 61, 3, 8, 10, 2, 5, 23, 51, 4, 13, 21}, i;
+        int n = sizeof(array) / sizeof(array[0]);
+    
+        printf("===========Selection Sort===========\n");
+        for(i = 1; i < n; i++) {
+            int currentMin = array[i];
+            int y = i - 1;
+    
+            while(y >= 0 && currentMin < array[y]) {
+                array[y + 1] = array[y];
+                array[y] = currentMin;
+                y--;
+            }
         }
+    
+        printf("[");
+        for(i = 0; i < n; i++) {
+            printf("%d", array[i]);
+    
+            if(i < n - 1) printf(", ");
+        }
+        printf("]");
+    
+        return 0;
     }
-
-    printf("[");
-    for(i = 0; i < n; i++) {
-        printf("%d", array[i]);
-
-        if(i < n - 1) printf(", ");
-    }
-    printf("]");
-
-    return 0;
-}
-```
+    ```
