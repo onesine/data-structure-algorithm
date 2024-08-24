@@ -239,3 +239,58 @@ You can find the online demo at [here](https://data-structure-algorithm-psi.verc
         return 0;
     }
     ```
+
+7. Quick Sort
+
+    ```c
+    #include <stdio.h>
+    
+    void printArray(int array[], int size) {
+        printf("[");
+        for(int i = 0; i < size; i++) {
+            printf("%d", array[i]);
+            
+            if(i < n - 1) printf(", ");
+        }
+        printf("]");
+    }
+    
+    int getPivotIndex(int array[], int startIndex, int endIndex) {
+        int pivotValue = array[endIndex], i = startIndex, temp;
+        
+        for(int j = startIndex; j < endIndex; j++) {
+            if(array[j] <= pivotValue) {
+                temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+                i++;
+            }
+        }
+        
+        temp = array[i];
+        array[i] = array[endIndex];
+        array[endIndex] = temp;
+        
+        return i;
+    }
+    
+    void quickSort(int array[], int startIndex, int endIndex) {
+        if(startIndex < endIndex) {
+            int pivotIndex = getPivotIndex(array, startIndex, endIndex);
+            quickSort(array, startIndex, pivotIndex - 1);
+            quickSort(array, pivotIndex + 1, endIndex);
+        }
+    }
+    
+    int main() {
+        int array[] = {7, 61, 3, 8, 10, 2, 5, 23, 51, 4, 13, 21};
+        int n = sizeof(array) / sizeof(array[0]);
+        
+        printf("===========Quick Sort===========\n");
+        quickSort(array, 0, n - 1);
+        
+        printArray(array, n);
+        
+        return 0;
+    }
+    ```
